@@ -137,7 +137,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Visual Element */}
+          {/* Visual Element - Profile Image */}
           <motion.div
             className="relative flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0"
             initial={{ opacity: 0, x: 30 }}
@@ -148,48 +148,44 @@ export default function Hero() {
               {/* Gradient Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-3xl" />
               
-              {/* Main Image */}
+              {/* Main Image Container */}
               <div className="relative bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-3xl p-4 sm:p-6 md:p-8 backdrop-blur-sm border border-border/50">
-                <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center">
-                  <div className="text-white text-4xl sm:text-5xl md:text-6xl font-bold">L</div>
+                <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden">
+                  {/* Profile Image */}
+                  <Image
+                    src="/fotocv.webp"
+                    alt="Lucas Sosa - Full Stack Developer"
+                    fill
+                    className="object-cover object-center"
+                    priority
+                    sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, 320px"
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                 </div>
                 
                 {/* Floating Elements */}
                 <motion.div
-                  className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-yellow-500 rounded-full"
+                  className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-yellow-500 rounded-full shadow-lg"
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div
-                  className="absolute -bottom-2 sm:-bottom-4 -left-2 sm:-left-4 w-4 h-4 sm:w-6 sm:h-6 bg-purple-500 rounded-full"
+                  className="absolute -bottom-2 sm:-bottom-4 -left-2 sm:-left-4 w-4 h-4 sm:w-6 sm:h-6 bg-purple-500 rounded-full shadow-lg"
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                />
+                <motion.div
+                  className="absolute top-1/2 -right-2 sm:-right-4 w-3 h-3 sm:w-4 sm:h-4 bg-pink-500 rounded-full shadow-lg"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 />
               </div>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-      >
-        <motion.div
-          className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <motion.div
-            className="w-1 h-2 sm:h-3 bg-muted-foreground/50 rounded-full mt-1.5 sm:mt-2"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
-      </motion.div>
     </section>
   )
 }
