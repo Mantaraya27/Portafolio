@@ -4,12 +4,14 @@ const nextConfig: NextConfig = {
   // Optimizaciones de rendimiento
   experimental: {
     optimizePackageImports: ['react', 'react-dom'],
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+  },
+  
+  // Configuración de Turbopack (estable)
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
     },
   },
