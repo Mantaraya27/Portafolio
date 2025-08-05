@@ -1,122 +1,70 @@
-'use client';
+"use client"
 
-import Link from 'next/link';
+import { motion } from "framer-motion"
 
 export default function Hero() {
   return (
-    <section className="min-h-screen bg-black text-white flex items-center pt-16" role="banner" aria-labelledby="hero-title">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          
-          {/* Contenido de texto - Lado izquierdo */}
-          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-            <h1 id="hero-title" className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-blue-400 leading-tight">
-              Lucas Dev
-            </h1>
-            
-            <p className="text-lg sm:text-xl text-gray-200 leading-relaxed max-w-lg mx-auto lg:mx-0">
-              Donde la creatividad se encuentra con la tecnología. Desarrollador full-stack que crea experiencias digitales elegantes que inspiran y elevan tu presencia en línea.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link 
-                href="#work"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium transition-colors inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black"
-                aria-label="Ver mi trabajo"
-              >
-                Ver mi trabajo
-              </Link>
-              
-              <Link 
-                href="#about"
-                className="text-white hover:text-blue-400 font-medium transition-colors inline-flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded"
-                aria-label="Conocer más sobre mí"
-              >
-                Conoce más
-                <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-          
-          {/* Ilustración 3D - Lado derecho */}
-          <div className="relative h-64 sm:h-80 lg:h-96 xl:h-[500px] flex items-center justify-center order-first lg:order-last" aria-hidden="true">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-              {/* Fondo del "libro" */}
-              <div className="absolute inset-0 bg-gray-800 rounded-lg shadow-2xl transform rotate-3">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg"></div>
-              </div>
-              
-              {/* Marcador de página */}
-              <div className="absolute -bottom-2 -right-4 w-6 sm:w-8 h-12 sm:h-16 bg-blue-500 rounded-t-lg shadow-lg"></div>
-              
-              {/* Herramientas de diseño */}
-              <div className="absolute top-4 sm:top-8 left-4 sm:left-8 space-y-2 sm:space-y-4">
-                {/* Triángulo naranja */}
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-orange-500 rounded-sm transform rotate-45"></div>
-                
-                {/* Círculo rojo */}
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-full"></div>
-                
-                {/* Pluma */}
-                <div className="flex items-center space-x-1">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-purple-600 rounded-sm"></div>
-                  <div className="w-1.5 h-3 sm:w-2 sm:h-4 bg-white rounded-sm"></div>
-                </div>
-                
-                {/* Texto */}
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-sm flex items-center justify-center">
-                  <span className="text-white font-bold text-xs sm:text-sm">T</span>
-                </div>
-              </div>
-              
-              {/* Herramientas de color */}
-              <div className="absolute top-4 sm:top-8 right-4 sm:right-8 space-y-2 sm:space-y-4">
-                {/* Barra de herramientas */}
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
-                </div>
-                
-                {/* Gradientes */}
-                <div className="space-y-1 sm:space-y-2">
-                  <div className="w-6 h-2 sm:w-8 sm:h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-sm"></div>
-                  <div className="w-6 h-2 sm:w-8 sm:h-3 bg-gradient-to-r from-pink-400 to-purple-500 rounded-sm"></div>
-                </div>
-                
-                {/* Rueda de colores */}
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 rounded-full flex items-center justify-center">
-                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-white rounded-full"></div>
-                </div>
-              </div>
-              
-              {/* Elementos centrales */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative">
-                  {/* Cuadrados y círculos conectados */}
-                  <div className="absolute -top-3 sm:-top-4 -left-3 sm:-left-4 w-2 h-2 sm:w-3 sm:h-3 bg-blue-400 rounded-sm"></div>
-                  <div className="absolute -top-3 sm:-top-4 -right-3 sm:-right-4 w-2 h-2 sm:w-3 sm:h-3 bg-blue-400 rounded-full"></div>
-                  <div className="absolute -bottom-3 sm:-bottom-4 -left-3 sm:-left-4 w-2 h-2 sm:w-3 sm:h-3 bg-blue-400 rounded-full"></div>
-                  <div className="absolute -bottom-3 sm:-bottom-4 -right-3 sm:-right-4 w-2 h-2 sm:w-3 sm:h-3 bg-blue-400 rounded-sm"></div>
-                  
-                  {/* Líneas de conexión */}
-                  <div className="absolute top-0 left-0 w-6 h-0.5 sm:w-8 sm:h-0.5 bg-blue-400 transform rotate-45 origin-left"></div>
-                  <div className="absolute top-0 right-0 w-6 h-0.5 sm:w-8 sm:h-0.5 bg-blue-400 transform -rotate-45 origin-right"></div>
-                  <div className="absolute bottom-0 left-0 w-6 h-0.5 sm:w-8 sm:h-0.5 bg-blue-400 transform -rotate-45 origin-left"></div>
-                  <div className="absolute bottom-0 right-0 w-6 h-0.5 sm:w-8 sm:h-0.5 bg-blue-400 transform rotate-45 origin-right"></div>
-                  
-                  {/* Pluma central */}
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-white rounded-sm flex items-center justify-center">
-                    <div className="w-1.5 h-2 sm:w-2 sm:h-3 bg-gray-800 rounded-sm"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="relative isolate overflow-hidden bg-background">
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:flex lg:items-center lg:gap-x-10 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg lg:flex-shrink-0">
+          <motion.h1
+            className="mt-10 text-4xl font-bold tracking-tight text-foreground sm:text-6xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-gradient">Flowers & Saints</span>
+          </motion.h1>
+          <motion.p
+            className="mt-6 text-lg leading-8 text-muted-foreground"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Where minimal design meets floral artistry. We craft elegant experiences that inspire and elevate your
+            space.
+          </motion.p>
+          <motion.div
+            className="mt-10 flex items-center gap-x-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <a
+              href="https://www.flowersandsaints.com.au"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="apple-button"
+            >
+              Explore Our Work
+            </a>
+            <a
+              href="https://www.flowersandsaints.com.au"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold leading-6 text-foreground"
+            >
+              Learn more <span aria-hidden="true">→</span>
+            </a>
+          </motion.div>
         </div>
+        <motion.div
+          className="mx-auto mt-16 lg:mt-0"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <div className="relative">
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/creative-SW6QDQbcVuwPgb6a2CYtYmRbsJa4k1.png"
+              alt="Flowers & Saints design concept"
+              width={600}
+              height={600}
+              className="w-[500px] rounded-2xl shadow-xl ring-1 ring-gray-900/10"
+            />
+          </div>
+        </motion.div>
       </div>
-    </section>
-  );
-} 
+    </div>
+  )
+}

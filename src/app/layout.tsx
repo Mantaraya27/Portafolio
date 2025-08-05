@@ -1,70 +1,31 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./globals.css"
+import { Inter } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import type React from "react"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: 'swap',
-  preload: true,
-  fallback: ['system-ui', 'Arial', 'sans-serif'],
-  adjustFontFallback: true,
-});
+const inter = Inter({ subsets: ["latin"] })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: 'swap',
-  preload: true,
-  fallback: ['monospace'],
-  adjustFontFallback: true,
-});
-
-export const metadata: Metadata = {
-  title: "Lucas Dev - Portfolio",
-  description: "Desarrollador full-stack que crea experiencias digitales elegantes que inspiran y elevan tu presencia en línea.",
-  keywords: ["desarrollador", "full-stack", "portfolio", "web development", "React", "Next.js"],
-  authors: [{ name: "Lucas Dev" }],
-  creator: "Lucas Dev",
-  openGraph: {
-    title: "Lucas Dev - Portfolio",
-    description: "Desarrollador full-stack que crea experiencias digitales elegantes",
-    type: "website",
-    locale: "es_ES",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Lucas Dev - Portfolio",
-    description: "Desarrollador full-stack que crea experiencias digitales elegantes",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  // Optimizaciones para mejorar LCP
-  other: {
-    'theme-color': '#000000',
-    'color-scheme': 'light dark',
-  },
-};
+export const metadata = {
+  title: "Minimal Creative Agency",
+  description: "Apple-inspired design portfolio",
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="es">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen bg-background text-foreground`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

@@ -1,12 +1,23 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Hero from "./components/Hero"
+import WearYourStory from "./components/WearYourStory"
+import FeatureCarousel from "./components/FeatureCarousel"
+import PortfolioGrid from "./components/PortfolioGrid"
+import Timeline from "./components/Timeline"
+import Marquee from "./components/Marquee"
+import ContactForm from "./components/ContactForm"
+import NewsletterSubscribe from "./components/NewsletterSubscribe"
 
-// Página principal del portafolio
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black">
-      <Navbar />
+    <>
       <Hero />
-    </div>
-  );
+      <WearYourStory />
+      <FeatureCarousel />
+      <PortfolioGrid />
+      <Timeline />
+      <Marquee />
+      <ContactForm />
+      <NewsletterSubscribe />
+    </>
+  )
 }
