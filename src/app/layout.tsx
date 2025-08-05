@@ -17,13 +17,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-background text-foreground`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+                    <html lang="en" suppressHydrationWarning>
+                  <body className={`${inter.className} min-h-screen bg-background text-foreground overflow-x-hidden`}>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                      <main className="overflow-x-hidden">{children}</main>
+                      <Footer />
+                    </ThemeProvider>
+                  </body>
+                </html>
   )
 }

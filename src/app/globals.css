@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevenir overflow horizontal */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 /* Optimizaciones de rendimiento */
 * {
   box-sizing: border-box;
@@ -133,5 +139,11 @@ img {
   
   .apple-button {
     @apply rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background shadow-sm hover:bg-foreground/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground;
+  }
+
+  .bg-grid-white {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   }
 }
