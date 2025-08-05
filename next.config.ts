@@ -4,6 +4,14 @@ const nextConfig: NextConfig = {
   // Optimizaciones de rendimiento
   experimental: {
     optimizePackageImports: ['react', 'react-dom'],
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   
   // Configuración de compilación para navegadores modernos
@@ -17,14 +25,7 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60,
   },
   
-  // Configuración de webpack para reducir el bundle
-  webpack: (config, { dev, isServer }) => {
-    if (!dev && !isServer) {
-      // Optimizar para navegadores modernos
-      config.target = 'web';
-    }
-    return config;
-  },
+
   
   // Headers para optimización
   async headers() {
