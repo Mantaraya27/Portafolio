@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   // Optimizaciones de rendimiento para mejorar LCP
   experimental: {
     optimizePackageImports: ['react', 'react-dom'],
-    optimizeCss: true,
   },
   
   // Configuración de Turbopack (estable)
