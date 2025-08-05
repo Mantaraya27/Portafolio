@@ -2,54 +2,78 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
+import { ExternalLink, Github, Globe, Zap, Code, Palette } from "lucide-react"
 
 const projects = [
   {
     id: 1,
-    title: "Minimalist Brand Identity",
-    description: "Clean and modern visual communication for a tech startup",
-    imageUrl: "/placeholder.svg?height=600&width=800",
-    category: "Branding",
+    title: "E-Commerce Platform",
+    description: "Plataforma completa de comercio electrónico con Next.js, TypeScript y Stripe. Optimizada para rendimiento con SSR y ISR.",
+    category: "Full-Stack",
+    technologies: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
+    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+    liveUrl: "https://ecommerce-demo.vercel.app",
+    githubUrl: "https://github.com/lucas-dev/ecommerce-platform",
+    featured: true,
   },
   {
     id: 2,
-    title: "Sleek Web Experience",
-    description: "Elegant online presence for a luxury fashion brand",
-    imageUrl: "/placeholder.svg?height=800&width=600",
-    category: "Web Design",
+    title: "Task Management App",
+    description: "Aplicación de gestión de tareas con React, Firebase y autenticación en tiempo real. Interfaz intuitiva y responsive.",
+    category: "React",
+    technologies: ["React", "Firebase", "Material-UI", "Redux"],
+    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
+    liveUrl: "https://task-app-demo.vercel.app",
+    githubUrl: "https://github.com/lucas-dev/task-management",
+    featured: false,
   },
   {
     id: 3,
-    title: "Intuitive Mobile App",
-    description: "User-friendly app design for a health and wellness company",
-    imageUrl: "/placeholder.svg?height=600&width=800",
-    category: "Mobile App",
+    title: "Portfolio Website",
+    description: "Portfolio personal optimizado para SEO con Next.js y Framer Motion. Diseño moderno y animaciones fluidas.",
+    category: "Next.js",
+    technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
+    imageUrl: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
+    liveUrl: "https://lucas-portfolio.vercel.app",
+    githubUrl: "https://github.com/lucas-dev/portfolio",
+    featured: true,
   },
   {
     id: 4,
-    title: "Elegant Digital Campaign",
-    description: "Sophisticated marketing strategy for a luxury automotive brand",
-    imageUrl: "/placeholder.svg?height=800&width=600",
-    category: "Digital Marketing",
+    title: "Weather Dashboard",
+    description: "Dashboard meteorológico con APIs en tiempo real, gráficos interactivos y geolocalización. PWA optimizada.",
+    category: "JavaScript",
+    technologies: ["JavaScript", "Chart.js", "OpenWeather API", "PWA"],
+    imageUrl: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop",
+    liveUrl: "https://weather-dashboard-demo.vercel.app",
+    githubUrl: "https://github.com/lucas-dev/weather-app",
+    featured: false,
   },
   {
     id: 5,
-    title: "Refined UI/UX Design",
-    description: "Streamlined user interfaces for a financial services platform",
-    imageUrl: "/placeholder.svg?height=600&width=800",
-    category: "UI/UX",
+    title: "Social Media Clone",
+    description: "Clon de red social con autenticación, posts en tiempo real, likes y comentarios. Backend con Node.js y MongoDB.",
+    category: "Full-Stack",
+    technologies: ["Node.js", "MongoDB", "Socket.io", "React"],
+    imageUrl: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop",
+    liveUrl: "https://social-clone-demo.vercel.app",
+    githubUrl: "https://github.com/lucas-dev/social-media-clone",
+    featured: true,
   },
   {
     id: 6,
-    title: "Minimalist Product Design",
-    description: "Sleek and functional design for a smart home device",
-    imageUrl: "/placeholder.svg?height=800&width=600",
-    category: "Product Design",
+    title: "AI Chat Interface",
+    description: "Interfaz de chat con IA usando OpenAI API. Diseño conversacional con historial y múltiples modelos.",
+    category: "AI/ML",
+    technologies: ["OpenAI API", "React", "TypeScript", "Vercel"],
+    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+    liveUrl: "https://ai-chat-demo.vercel.app",
+    githubUrl: "https://github.com/lucas-dev/ai-chat",
+    featured: false,
   },
 ]
 
-const categories = ["All", ...new Set(projects.map((project) => project.category))]
+const categories = ["All", "Full-Stack", "React", "Next.js", "JavaScript", "AI/ML"]
 
 export default function PortfolioGrid() {
   const [filter, setFilter] = useState("All")
@@ -57,87 +81,209 @@ export default function PortfolioGrid() {
   const filteredProjects = filter === "All" ? projects : projects.filter((project) => project.category === filter)
 
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-20 bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Our Work</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            A showcase of our minimalist designs and creative solutions.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Mis{" "}
+            <span className="text-gradient bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Proyectos
+            </span>
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Una colección de aplicaciones web modernas y soluciones digitales innovadoras
           </p>
         </motion.div>
 
-        <div className="flex justify-center space-x-4 mb-8">
-          {categories.map((category) => (
-            <button
+        {/* Filtros */}
+        <motion.div 
+          className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          {categories.map((category, index) => (
+            <motion.button
               key={category}
               onClick={() => setFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${
                 filter === category
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:scale-105"
               }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
             >
               {category}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {filteredProjects.map((project) => (
+        {/* Grid de Proyectos */}
+        <motion.div 
+          layout 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <AnimatePresence mode="wait">
+            {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-background rounded-3xl shadow-lg overflow-hidden hover-lift transition-all duration-300 ease-in-out border-2 border-transparent hover:border-primary/10"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`group relative bg-background rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 ease-in-out border-2 border-transparent hover:border-primary/20 ${
+                  project.featured ? 'ring-2 ring-primary/20' : ''
+                }`}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={project.imageUrl || "/placeholder.svg"}
-                    alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 ease-in-out group-hover:scale-105"
-                  />
+                {/* Imagen del Proyecto */}
+                <div className="relative h-48 sm:h-56 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  
+                  {/* Placeholder con gradiente */}
+                  <div className="w-full h-full bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 flex items-center justify-center">
+                    <div className="text-center">
+                      <Code className="w-12 h-12 mx-auto mb-2 text-primary" />
+                      <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
+                    </div>
+                  </div>
+
+                  {/* Overlay con información */}
                   <motion.div
-                    className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity duration-300"
+                    className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                   >
-                    <p className="text-white text-center px-4">{project.description}</p>
+                    <div className="text-center p-4">
+                      <p className="text-white text-sm sm:text-base leading-relaxed mb-4">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-1 justify-center mb-4">
+                        {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-2 py-1 bg-primary/20 text-primary text-xs rounded-full"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.technologies.length > 3 && (
+                          <span className="px-2 py-1 bg-muted-foreground/20 text-muted-foreground text-xs rounded-full">
+                            +{project.technologies.length - 3}
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </motion.div>
+
+                  {/* Badge de Featured */}
+                  {project.featured && (
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-medium rounded-full">
+                        Destacado
+                      </span>
+                    </div>
+                  )}
                 </div>
-                <div className="p-6">
-                  <div className="text-sm font-medium text-primary mb-1">{project.category}</div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
-                  <a
-                    href="https://www.flowersandsaints.com.au"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline inline-flex items-center"
-                  >
-                    View Project
-                    <svg
-                      className="w-4 h-4 ml-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </a>
+
+                {/* Contenido del Proyecto */}
+                <div className="p-4 sm:p-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs sm:text-sm font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">
+                      {project.category}
+                    </span>
+                    <div className="flex items-center space-x-1">
+                      <Zap className="w-4 h-4 text-yellow-500" />
+                      <span className="text-xs text-muted-foreground">Optimizado</span>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  
+                  <p className="text-sm sm:text-base text-muted-foreground mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  {/* Tecnologías */}
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Enlaces */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex space-x-2">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-1 text-primary hover:text-primary/80 transition-colors text-sm"
+                        >
+                          <Globe className="w-4 h-4" />
+                          <span>Demo</span>
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                        >
+                          <Github className="w-4 h-4" />
+                          <span>Code</span>
+                        </a>
+                      )}
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </div>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          className="text-center mt-12 sm:mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          <p className="text-muted-foreground mb-4">
+            ¿Interesado en trabajar juntos en tu próximo proyecto?
+          </p>
+          <motion.button
+            className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Contactar
+          </motion.button>
         </motion.div>
       </div>
     </section>
