@@ -1,5 +1,0 @@
-[33m11d2383[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Fix build errors: remove invalid file and fix Google Fonts preconnect warning
-[33m470b6de[m Optimize LCP and FCP: critical CSS, font loading, and performance improvements
-[33mfc025d1[m Update Turbopack config: move from experimental.turbo to config.turbopack
-[33m3b637c0[m Migrate to Turbopack: remove webpack config and add turbo rules
-[33m92c5dc3[m Fix build configuration: update TypeScript target and webpack config
