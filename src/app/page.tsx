@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
-import WearYourStory from "./components/WearYourStory"
+import AboutMe from "./components/WearYourStory"
 import FeatureCarousel from "./components/FeatureCarousel"
 import PortfolioGrid from "./components/PortfolioGrid"
 import Timeline from "./components/Timeline"
@@ -16,11 +16,11 @@ export default function Home() {
         <section id="home">
           <Hero />
         </section>
-        <section id="projects">
-          <WearYourStory />
-          <FeatureCarousel />
-          <PortfolioGrid />
-        </section>
+                            <section id="projects">
+                      <AboutMe />
+                      <FeatureCarousel />
+                      <PortfolioGrid />
+                    </section>
         <section id="about">
           <Timeline />
           <Marquee />
