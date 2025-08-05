@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       // Optimizar para navegadores modernos
-      config.target = 'esnext';
+      config.target = 'web';
     }
     return config;
   },
