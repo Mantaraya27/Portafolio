@@ -4,34 +4,36 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen bg-black text-white flex items-center pt-16">
+    <section className="min-h-screen bg-black text-white flex items-center pt-16" role="banner" aria-labelledby="hero-title">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           
           {/* Contenido de texto - Lado izquierdo */}
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-blue-400 leading-tight">
+            <h1 id="hero-title" className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-blue-400 leading-tight">
               Lucas Dev
             </h1>
             
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <p className="text-lg sm:text-xl text-gray-200 leading-relaxed max-w-lg mx-auto lg:mx-0">
               Donde la creatividad se encuentra con la tecnología. Desarrollador full-stack que crea experiencias digitales elegantes que inspiran y elevan tu presencia en línea.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link 
                 href="#work"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium transition-colors inline-flex items-center justify-center"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium transition-colors inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black"
+                aria-label="Ver mi trabajo"
               >
                 Ver mi trabajo
               </Link>
               
               <Link 
                 href="#about"
-                className="text-white hover:text-blue-400 font-medium transition-colors inline-flex items-center justify-center group"
+                className="text-white hover:text-blue-400 font-medium transition-colors inline-flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded"
+                aria-label="Conocer más sobre mí"
               >
                 Conoce más
-                <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
@@ -39,7 +41,7 @@ export default function Hero() {
           </div>
           
           {/* Ilustración 3D - Lado derecho */}
-          <div className="relative h-64 sm:h-80 lg:h-96 xl:h-[500px] flex items-center justify-center order-first lg:order-last">
+          <div className="relative h-64 sm:h-80 lg:h-96 xl:h-[500px] flex items-center justify-center order-first lg:order-last" aria-hidden="true">
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
               {/* Fondo del "libro" */}
               <div className="absolute inset-0 bg-gray-800 rounded-lg shadow-2xl transform rotate-3">
