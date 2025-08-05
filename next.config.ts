@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Optimizaciones de rendimiento
+  // Optimizaciones de rendimiento para mejorar LCP
   experimental: {
     optimizePackageImports: ['react', 'react-dom'],
     optimizeCss: true,
@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
   // Optimizaciones de rendimiento
   poweredByHeader: false,
   compress: true,
+  // Forzar nuevo despliegue para limpiar cache
   
   // Optimización de imágenes
   images: {
