@@ -1,3 +1,4 @@
+import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import WearYourStory from "./components/WearYourStory"
 import FeatureCarousel from "./components/FeatureCarousel"
@@ -10,14 +11,25 @@ import NewsletterSubscribe from "./components/NewsletterSubscribe"
 export default function Home() {
   return (
     <>
-      <Hero />
-      <WearYourStory />
-      <FeatureCarousel />
-      <PortfolioGrid />
-      <Timeline />
-      <Marquee />
-      <ContactForm />
-      <NewsletterSubscribe />
+      <Navbar />
+      <main>
+        <section id="home">
+          <Hero />
+        </section>
+        <section id="projects">
+          <WearYourStory />
+          <FeatureCarousel />
+          <PortfolioGrid />
+        </section>
+        <section id="about">
+          <Timeline />
+          <Marquee />
+        </section>
+        <section id="contact">
+          <ContactForm />
+          <NewsletterSubscribe />
+        </section>
+      </main>
     </>
   )
 }

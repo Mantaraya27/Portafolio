@@ -1,142 +1,176 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { motion, AnimatePresence } from "framer-motion"
+import { useTheme } from "next-themes"
+import { Menu, X, Sun, Moon } from "lucide-react"
+
+const navItems = [
+  { name: "Inicio", href: "#home" },
+  { name: "Proyectos", href: "#projects" },
+  { name: "Habilidades", href: "#skills" },
+  { name: "Sobre mí", href: "#about" },
+  { name: "Contacto", href: "#contact" },
+]
 
 export default function Navbar() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
+  const { theme, setTheme } = useTheme()
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    // Aquí podrías implementar la lógica para cambiar el tema
-  };
+  useEffect(() => {
+    setMounted(true)
+    
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+      
+      // Detectar sección activa
+      const sections = navItems.map(item => item.href.replace("#", ""))
+      const current = sections.find(section => {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          return rect.top <= 100 && rect.bottom >= 100
+        }
+        return false
+      })
+      
+      if (current) {
+        setActiveSection(current)
+      }
+    }
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
+  const handleNavClick = (href: string) => {
+    setIsOpen(false)
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
-    <nav className="bg-black/90 backdrop-blur-md border-b border-gray-800 fixed w-full top-0 z-50" role="navigation" aria-label="Navegación principal">
+    <motion.nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? "bg-background/80 backdrop-blur-md border-b border-border/50" 
+          : "bg-transparent"
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo pixelado */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center" onClick={closeMobileMenu} aria-label="Ir al inicio">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 rounded-sm flex items-center justify-center" aria-hidden="true">
-                <div className="w-4 h-4 bg-white rounded-sm opacity-80"></div>
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <motion.div
+            className="flex-shrink-0"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link href="#home" className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">L</span>
               </div>
-              <span className="ml-2 text-white font-bold text-lg">Portfolio</span>
+              <span className="text-xl font-bold text-foreground hidden sm:block">
+                Lucas Dev
+              </span>
             </Link>
-          </div>
+          </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="flex items-center space-x-8" role="menubar">
-              <Link 
-                href="#work" 
-                className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded"
-                role="menuitem"
-              >
-                Work
-              </Link>
-              <Link 
-                href="#about" 
-                className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded"
-                role="menuitem"
-              >
-                About
-              </Link>
-              <Link 
-                href="#contact" 
-                className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded"
-                role="menuitem"
-              >
-                Contact
-              </Link>
-              
-              {/* Toggle de tema oscuro */}
-              <button
-                onClick={toggleTheme}
-                className="text-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded transition-colors"
-                aria-label="Cambiar modo oscuro"
-                aria-pressed={isDarkMode}
-              >
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              </button>
+          <div className="hidden lg:block">
+            <div className="ml-10 flex items-baseline space-x-8">
+              {navItems.map((item, index) => {
+                const isActive = activeSection === item.href.replace("#", "")
+                return (
+                  <motion.button
+                    key={item.name}
+                    className={`relative transition-colors duration-200 font-medium group ${
+                      isActive 
+                        ? "text-foreground" 
+                        : "text-foreground/80 hover:text-foreground"
+                    }`}
+                    onClick={() => handleNavClick(item.href)}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
+                    {item.name}
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}></span>
+                  </motion.button>
+                )
+              })}
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              className="text-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded transition-colors"
-              aria-label="Cambiar modo oscuro"
-              aria-pressed={isDarkMode}
-            >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            </button>
-            <button
-              onClick={toggleMobileMenu}
-              className="text-white hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded transition-colors"
-              aria-label="Abrir menú de navegación"
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
+          {/* Theme Toggle & Mobile Menu Button */}
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            {/* Theme Toggle */}
+            {mounted && (
+              <motion.button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Cambiar tema"
+              >
+                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              </motion.button>
+            )}
 
-        {/* Mobile Navigation Menu */}
-        <div 
-          id="mobile-menu"
-          className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}
-          aria-hidden={!isMobileMenuOpen}
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-black/95 backdrop-blur-md rounded-lg mt-2 border border-gray-800" role="menu">
-            <Link 
-              href="#work" 
-              className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded"
-              onClick={closeMobileMenu}
-              role="menuitem"
+            {/* Mobile menu button */}
+            <motion.button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Abrir menú"
+              aria-expanded={isOpen}
             >
-              Work
-            </Link>
-            <Link 
-              href="#about" 
-              className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded"
-              onClick={closeMobileMenu}
-              role="menuitem"
-            >
-              About
-            </Link>
-            <Link 
-              href="#contact" 
-              className="text-white hover:text-blue-400 block px-3 py-2 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-black rounded"
-              onClick={closeMobileMenu}
-              role="menuitem"
-            >
-              Contact
-            </Link>
+              {isOpen ? <X size={18} /> : <Menu size={18} />}
+            </motion.button>
           </div>
         </div>
       </div>
-    </nav>
-  );
+
+      {/* Mobile Navigation */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="lg:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="px-4 pt-4 pb-6 space-y-2 bg-background/95 backdrop-blur-md border-t border-border/50 shadow-lg">
+              {navItems.map((item, index) => (
+                <motion.button
+                  key={item.name}
+                  className="block w-full text-left px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-primary/10 rounded-lg transition-all duration-200 font-medium text-lg"
+                  onClick={() => handleNavClick(item.href)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  {item.name}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
+  )
 } 
