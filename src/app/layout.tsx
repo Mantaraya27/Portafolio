@@ -7,6 +7,8 @@ const geistSans = Geist({
   subsets: ["latin"],
   display: 'swap',
   preload: true,
+  fallback: ['system-ui', 'Arial', 'sans-serif'],
+  adjustFontFallback: true,
 });
 
 const geistMono = Geist_Mono({
@@ -14,6 +16,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: 'swap',
   preload: true,
+  fallback: ['monospace'],
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -41,6 +45,11 @@ export const metadata: Metadata = {
     width: 'device-width',
     initialScale: 1,
     maximumScale: 1,
+  },
+  // Optimizaciones para mejorar LCP
+  other: {
+    'theme-color': '#000000',
+    'color-scheme': 'light dark',
   },
 };
 

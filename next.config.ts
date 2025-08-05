@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   // Optimizaciones de rendimiento
   experimental: {
     optimizePackageImports: ['react', 'react-dom'],
+    optimizeCss: true,
   },
   
   // Configuración de Turbopack (estable)
@@ -20,6 +21,10 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  
+  // Optimizaciones de rendimiento
+  poweredByHeader: false,
+  compress: true,
   
   // Optimización de imágenes
   images: {
