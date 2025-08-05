@@ -30,11 +30,11 @@ export default function Footer() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-primary" />
-                  <span className="text-muted-foreground">lucas@example.com</span>
+                  <span className="text-muted-foreground">lucassosavega.ofi@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="w-4 h-4 text-primary" />
-                  <span className="text-muted-foreground">Buenos Aires, Argentina</span>
+                  <span className="text-muted-foreground">Asunción, Paraguay</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-primary" />
@@ -98,7 +98,7 @@ export default function Footer() {
                   <Linkedin className="w-5 h-5" />
                 </Link>
                 <Link
-                  href="mailto:lucas@example.com"
+                  href="mailto:lucassosavega.ofi@gmail.com"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="w-5 h-5" />

@@ -199,7 +199,7 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">Email</h4>
-                  <p className="text-muted-foreground">lucas@example.com</p>
+                  <p className="text-muted-foreground">lucassosavega.ofi@gmail.com</p>
                 </div>
               </div>
 
@@ -212,7 +212,7 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">Ubicación</h4>
-                  <p className="text-muted-foreground">Buenos Aires, Argentina</p>
+                  <p className="text-muted-foreground">Asunción, Paraguay</p>
                 </div>
               </div>
 
@@ -225,6 +225,19 @@ export default function ContactForm() {
                 <div>
                   <h4 className="font-semibold text-foreground">Tiempo de respuesta</h4>
                   <p className="text-muted-foreground">Generalmente respondo en 24 horas</p>
+                </div>
+              </div>
+
+              {/* Símbolo de protección */}
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-emerald-600 rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Formulario Protegido</h4>
+                  <p className="text-muted-foreground">Tus datos están seguros y protegidos</p>
                 </div>
               </div>
             </div>
@@ -306,6 +319,21 @@ export default function ContactForm() {
                 </div>
               </motion.div>
             )}
+
+            {/* Indicador de seguridad */}
+            <div className="mb-6 p-4 bg-gray-900 border border-gray-700 rounded-lg">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white">Formulario Seguro</h4>
+                  <p className="text-sm text-gray-300">Tus datos están protegidos y se envían de forma segura</p>
+                </div>
+              </div>
+            </div>
 
             <Form {...form}>
               <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

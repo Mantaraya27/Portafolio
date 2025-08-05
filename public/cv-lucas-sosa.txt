@@ -1,0 +1,86 @@
+LUCAS SOSA
+Desarrollador Web Full-Stack
+
+CONTACTO
+Email: lucas@example.com
+Teléfono: +54 11 1234-5678
+Ubicación: Buenos Aires, Argentina
+LinkedIn: linkedin.com/in/lucas-sosa
+GitHub: github.com/lucas-sosa
+
+PERFIL PROFESIONAL
+Desarrollador web full-stack apasionado por crear experiencias digitales únicas. 
+Especializado en React, Next.js y tecnologías modernas para llevar ideas al siguiente nivel.
+Más de 3 años de experiencia desarrollando aplicaciones web escalables y optimizadas.
+
+HABILIDADES TÉCNICAS
+• Frontend: React, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS
+• Backend: Node.js, Express, Python, Django
+• Bases de Datos: MongoDB, PostgreSQL, MySQL
+• Herramientas: Git, Docker, AWS, Vercel, Netlify
+• Diseño: Figma, Adobe XD, Responsive Design
+• Testing: Jest, React Testing Library, Cypress
+
+EXPERIENCIA LABORAL
+
+Desarrollador Full-Stack Senior
+TechCorp Argentina | 2022 - Presente
+• Lideré el desarrollo de 5 aplicaciones web con React y Node.js
+• Implementé arquitecturas escalables que mejoraron el rendimiento en un 40%
+• Coordiné un equipo de 3 desarrolladores en proyectos ágiles
+• Optimicé Core Web Vitals logrando puntuaciones de 95+ en Lighthouse
+
+Desarrollador Frontend
+Digital Solutions | 2021 - 2022
+• Desarrollé interfaces de usuario modernas con React y TypeScript
+• Implementé sistemas de autenticación y autorización
+• Integré APIs RESTful y GraphQL
+• Mejoré la accesibilidad web siguiendo estándares WCAG
+
+Desarrollador Web Junior
+StartupHub | 2020 - 2021
+• Creé landing pages responsivas con HTML, CSS y JavaScript
+• Optimicé SEO y rendimiento de sitios web
+• Colaboré en el desarrollo de aplicaciones con React
+• Implementé integraciones con servicios de terceros
+
+PROYECTOS DESTACADOS
+
+E-Commerce Platform
+• Plataforma completa de comercio electrónico con Next.js y Stripe
+• Optimizada para rendimiento con SSR e ISR
+• Tecnologías: Next.js, TypeScript, Stripe, Tailwind CSS
+
+Task Management App
+• Aplicación de gestión de tareas con React y Firebase
+• Autenticación en tiempo real y interfaz intuitiva
+• Tecnologías: React, Firebase, Material-UI, Redux
+
+AI Chat Interface
+• Interfaz de chat con IA usando OpenAI API
+• Diseño conversacional con historial y múltiples modelos
+• Tecnologías: OpenAI API, React, TypeScript, Vercel
+
+EDUCACIÓN
+
+Ingeniería en Sistemas de Información
+Universidad Tecnológica Nacional | 2018 - 2022
+• Especialización en Desarrollo Web
+• Proyecto final: Plataforma de gestión de proyectos
+
+CERTIFICACIONES
+• AWS Certified Developer Associate
+• Google Cloud Professional Developer
+• MongoDB Certified Developer
+• React Developer Certification
+
+IDIOMAS
+• Español: Nativo
+• Inglés: Avanzado (C1)
+• Portugués: Intermedio (B2)
+
+INTERESES
+• Inteligencia Artificial y Machine Learning
+• Arquitectura de software y patrones de diseño
+• Open Source y contribución a la comunidad
+• Nuevas tecnologías y frameworks emergentes 

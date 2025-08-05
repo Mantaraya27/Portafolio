@@ -57,12 +57,12 @@ const timelineEvents = [
   },
   {
     year: 2025,
-    title: "Desarrollo Avanzado",
-    description: "Continuo evolucionando con las últimas tecnologías y metodologías.",
+    title: "Aprendizaje Continuo",
+    description: "Sigo explorando nuevas tecnologías y mejorando mis habilidades.",
     details:
-      "Explorando nuevas tecnologías como AI/ML, desarrollo de APIs avanzadas, microservicios y arquitecturas escalables. Manteniendo un enfoque en código limpio, testing y mejores prácticas.",
+      "Mantengo un enfoque de aprendizaje constante, explorando nuevas tecnologías emergentes y metodologías de desarrollo. Me esfuerzo por mantenerme actualizado con las mejores prácticas y tendencias del desarrollo web moderno.",
     icon: Award,
-    technologies: ["AI/ML", "Microservices", "Testing", "Clean Code"],
+    technologies: ["Nuevas Tecnologías", "Mejores Prácticas", "Innovación", "Crecimiento"],
     color: "from-indigo-500 to-purple-500",
   },
 ]

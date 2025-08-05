@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { ArrowRight, Code, Zap, Palette } from "lucide-react"
+import { ArrowRight, Code, Zap, Palette, Download } from "lucide-react"
 
 export default function Hero() {
   return (
@@ -102,6 +102,37 @@ export default function Hero() {
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Contactar
+              </motion.button>
+
+              <motion.button
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  try {
+                    // Intentar descargar el CV PDF
+                    const link = document.createElement('a')
+                    link.href = '/CV - Lucas Sosa.pdf'
+                    link.download = 'CV-Lucas-Sosa.pdf'
+                    link.target = '_blank'
+                    link.rel = 'noopener noreferrer'
+                    
+                    // Agregar el enlace al DOM temporalmente
+                    document.body.appendChild(link)
+                    link.click()
+                    
+                    // Limpiar el enlace después de un breve delay
+                    setTimeout(() => {
+                      document.body.removeChild(link)
+                    }, 100)
+                  } catch (error) {
+                    // Si hay un error, abrir en una nueva pestaña
+                    window.open('/CV - Lucas Sosa.pdf', '_blank')
+                  }
+                }}
+              >
+                Descargar CV
+                <Download size={18} className="ml-2 group-hover:translate-y-1 transition-transform" />
               </motion.button>
             </motion.div>
           </motion.div>
