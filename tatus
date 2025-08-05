@@ -1,0 +1,5 @@
+[33m4ef09d2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Pequeños ajustes al form y uno a la tarjetita de timeline
+[33mb85ad64[m fix: solucionar error del footer con framer-motion y agregar sticky footer
+[33m849f19b[m feat: Cambiar texto del marquee de 'Flowers & Saints' a 'Lucas Sosa Developer'
+[33m0b83909[m feat: Mejorar diseño del timeline con layout vertical limpio y animaciones suaves
+[33m1408775[m feat: rediseñar sección de proyectos con portfolio real de desarrollo web

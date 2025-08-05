@@ -12,19 +12,23 @@ export default function Home() {
     <>
       <Navbar />
       <main>
-        <section id="home">
+        <section id="home" className="pt-16">
           <Hero />
         </section>
-                            <section id="projects">
-                      <AboutMe />
-                      <SkillsCarousel />
-                      <PortfolioGrid />
-                    </section>
-        <section id="about">
+        <section id="about" className="pt-16">
+          <AboutMe />
+        </section>
+        <section id="projects" className="pt-16">
+          <PortfolioGrid />
+        </section>
+        <section id="skills" className="pt-16">
+          <SkillsCarousel />
+        </section>
+        <section id="experience" className="pt-16">
           <Timeline />
           <Marquee />
         </section>
-        <section id="contact">
+        <section id="contact" className="pt-16">
           <ContactForm />
         </section>
       </main>
