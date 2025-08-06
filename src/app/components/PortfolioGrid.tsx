@@ -11,69 +11,27 @@ const projects = [
     description: "Plataforma completa de comercio electrónico con Next.js, TypeScript y Stripe. Optimizada para rendimiento con SSR y ISR.",
     category: "Full-Stack",
     technologies: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
-    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+    imageUrl: "/projects/ecommerce.svg",
     liveUrl: "https://ecommerce-demo.vercel.app",
     githubUrl: "https://github.com/lucas-dev/ecommerce-platform",
     featured: true,
+    status: "En Proceso",
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "Aplicación de gestión de tareas con React, Firebase y autenticación en tiempo real. Interfaz intuitiva y responsive.",
-    category: "React",
-    technologies: ["React", "Firebase", "Material-UI", "Redux"],
-    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
-    liveUrl: "https://task-app-demo.vercel.app",
-    githubUrl: "https://github.com/lucas-dev/task-management",
-    featured: false,
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    description: "Portfolio personal optimizado para SEO con Next.js y Framer Motion. Diseño moderno y animaciones fluidas.",
-    category: "Next.js",
-    technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
-    imageUrl: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
-    liveUrl: "https://lucas-portfolio.vercel.app",
-    githubUrl: "https://github.com/lucas-dev/portfolio",
+    title: "Sistema de Gestión de Reportes Conductuales Académicos",
+    description: "Aplicación web para gestión de documentos y reportes conductuales utilizada en el Colegio Técnico Nacional de Asunción. Sistema integral para el seguimiento académico y conductual de estudiantes.",
+    category: "Python",
+    technologies: ["Python", "Flask", "HTML", "CSS", "SQLite"],
+    imageUrl: "/projects/image.webp",
+    liveUrl: "#",
+    githubUrl: "https://github.com/Mantaraya27/Proyecto-Institucional-de-Gestion.git",
     featured: true,
-  },
-  {
-    id: 4,
-    title: "Weather Dashboard",
-    description: "Dashboard meteorológico con APIs en tiempo real, gráficos interactivos y geolocalización. PWA optimizada.",
-    category: "JavaScript",
-    technologies: ["JavaScript", "Chart.js", "OpenWeather API", "PWA"],
-    imageUrl: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop",
-    liveUrl: "https://weather-dashboard-demo.vercel.app",
-    githubUrl: "https://github.com/lucas-dev/weather-app",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Social Media Clone",
-    description: "Clon de red social con autenticación, posts en tiempo real, likes y comentarios. Backend con Node.js y MongoDB.",
-    category: "Full-Stack",
-    technologies: ["Node.js", "MongoDB", "Socket.io", "React"],
-    imageUrl: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop",
-    liveUrl: "https://social-clone-demo.vercel.app",
-    githubUrl: "https://github.com/lucas-dev/social-media-clone",
-    featured: true,
-  },
-  {
-    id: 6,
-    title: "AI Chat Interface",
-    description: "Interfaz de chat con IA usando OpenAI API. Diseño conversacional con historial y múltiples modelos.",
-    category: "AI/ML",
-    technologies: ["OpenAI API", "React", "TypeScript", "Vercel"],
-    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-    liveUrl: "https://ai-chat-demo.vercel.app",
-    githubUrl: "https://github.com/lucas-dev/ai-chat",
-    featured: false,
+    status: "Completado",
   },
 ]
 
-const categories = ["All", "Full-Stack", "React", "Next.js", "JavaScript", "AI/ML"]
+const categories = ["All", "Full-Stack", "Python"]
 
 export default function PortfolioGrid() {
   const [filter, setFilter] = useState("All")
@@ -154,12 +112,13 @@ export default function PortfolioGrid() {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   
-                  {/* Placeholder con gradiente */}
+                  {/* Imagen del proyecto */}
                   <div className="w-full h-full bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 flex items-center justify-center">
-                    <div className="text-center">
-                      <Code className="w-12 h-12 mx-auto mb-2 text-primary" />
-                      <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
-                    </div>
+                    <img 
+                      src={project.imageUrl} 
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
 
                   {/* Overlay con información */}
@@ -195,6 +154,19 @@ export default function PortfolioGrid() {
                     <div className="absolute top-3 left-3">
                       <span className="px-2 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-medium rounded-full">
                         Destacado
+                      </span>
+                    </div>
+                  )}
+                  
+                  {/* Badge de Estado */}
+                  {project.status && (
+                    <div className="absolute top-3 right-3">
+                      <span className={`px-2 py-1 text-white text-xs font-medium rounded-full ${
+                        project.status === "En Proceso" 
+                          ? "bg-gradient-to-r from-blue-500 to-cyan-500" 
+                          : "bg-gradient-to-r from-green-500 to-emerald-500"
+                      }`}>
+                        {project.status}
                       </span>
                     </div>
                   )}
