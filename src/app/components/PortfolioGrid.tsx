@@ -12,7 +12,6 @@ const projects = [
     category: "Full-Stack",
     technologies: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
     imageUrl: "/projects/ecommerce.svg",
-    liveUrl: "https://ecommerce-demo.vercel.app",
     githubUrl: "https://github.com/lucas-dev/ecommerce-platform",
     featured: true,
     status: "En Proceso",
@@ -24,7 +23,6 @@ const projects = [
     category: "Python",
     technologies: ["Python", "Flask", "HTML", "CSS", "SQLite"],
     imageUrl: "/projects/image.webp",
-    liveUrl: "#",
     githubUrl: "https://github.com/Mantaraya27/Proyecto-Institucional-de-Gestion.git",
     featured: true,
     status: "Completado",
@@ -207,17 +205,6 @@ export default function PortfolioGrid() {
                   {/* Enlaces */}
                   <div className="flex items-center justify-between">
                     <div className="flex space-x-2">
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-1 text-primary hover:text-primary/80 transition-colors text-sm"
-                        >
-                          <Globe className="w-4 h-4" />
-                          <span>Demo</span>
-                        </a>
-                      )}
                       {project.githubUrl && (
                         <a
                           href={project.githubUrl}
