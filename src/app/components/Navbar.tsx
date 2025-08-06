@@ -76,9 +76,11 @@ export default function Navbar() {
             whileTap={{ scale: 0.95 }}
           >
             <Link href="#home" className="flex items-center space-x-2">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xs sm:text-sm">L</span>
-              </div>
+              <img 
+                src="/logonav.webp" 
+                alt="Lucas Dev Logo" 
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg"
+              />
               <span className="text-lg sm:text-xl font-bold text-foreground hidden xs:block">
                 Lucas Dev
               </span>

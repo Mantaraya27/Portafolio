@@ -7,8 +7,11 @@ import type React from "react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Minimal Creative Agency",
-  description: "Apple-inspired design portfolio",
+  title: "Lucas Sosa - Full Stack Developer",
+  description: "Portfolio personal de Lucas Sosa, desarrollador Full Stack especializado en React, Next.js y tecnologías modernas.",
+  icons: {
+    icon: '/logonav.ico',
+  },
 }
 
 export default function RootLayout({
@@ -17,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen bg-background text-foreground overflow-x-hidden flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main className="flex-1">{children}</main>

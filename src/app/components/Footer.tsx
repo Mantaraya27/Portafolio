@@ -90,7 +90,7 @@ export default function Footer() {
                   <Github className="w-5 h-5" />
                 </Link>
                 <Link
-                  href="https://linkedin.com/in/tu-usuario"
+                  href="https://www.linkedin.com/in/lucas-sosa-637584369"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"

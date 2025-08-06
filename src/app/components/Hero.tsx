@@ -86,7 +86,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <motion.button
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
@@ -105,14 +105,14 @@ export default function Hero() {
               </motion.button>
 
               <motion.button
-                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
                   try {
                     // Intentar descargar el CV PDF
                     const link = document.createElement('a')
-                    link.href = '/CV - Lucas Sosa.pdf'
+                    link.href = '/projects/CV - Lucas Sosa.pdf'
                     link.download = 'CV-Lucas-Sosa.pdf'
                     link.target = '_blank'
                     link.rel = 'noopener noreferrer'
@@ -127,7 +127,7 @@ export default function Hero() {
                     }, 100)
                   } catch (error) {
                     // Si hay un error, abrir en una nueva pestaña
-                    window.open('/CV - Lucas Sosa.pdf', '_blank')
+                    window.open('/projects/CV - Lucas Sosa.pdf', '_blank')
                   }
                 }}
               >

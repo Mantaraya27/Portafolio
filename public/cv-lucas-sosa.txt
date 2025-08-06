@@ -5,7 +5,7 @@ CONTACTO
 Email: lucas@example.com
 Teléfono: +54 11 1234-5678
 Ubicación: Buenos Aires, Argentina
-LinkedIn: linkedin.com/in/lucas-sosa
+LinkedIn: linkedin.com/in/lucas-sosa-637584369
 GitHub: github.com/lucas-sosa
 
 PERFIL PROFESIONAL
