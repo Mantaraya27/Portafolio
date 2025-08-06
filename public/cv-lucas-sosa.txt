@@ -3,10 +3,10 @@ Desarrollador Web Full-Stack
 
 CONTACTO
 Email: lucas@example.com
-Teléfono: +54 11 1234-5678
+Teléfono: +595 983 199 896
 Ubicación: Buenos Aires, Argentina
 LinkedIn: linkedin.com/in/lucas-sosa-637584369
-GitHub: github.com/lucas-sosa
+GitHub: github.com/Mantaraya27
 
 PERFIL PROFESIONAL
 Desarrollador web full-stack apasionado por crear experiencias digitales únicas. 

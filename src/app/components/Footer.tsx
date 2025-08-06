@@ -38,7 +38,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-primary" />
-                  <span className="text-muted-foreground">+54 11 1234-5678</span>
+                  <span className="text-muted-foreground">+595 983 199 896</span>
                 </div>
               </div>
             </motion.div>
@@ -82,7 +82,7 @@ export default function Footer() {
               <h4 className="text-lg font-semibold text-foreground mb-4">Sígueme</h4>
               <div className="flex space-x-4">
                 <Link
-                  href="https://github.com/tu-usuario"
+                  href="https://github.com/Mantaraya27"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
