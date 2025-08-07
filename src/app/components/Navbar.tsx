@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "next-themes"
@@ -22,51 +22,77 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home")
   const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
-    setMounted(true)
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 20)
     
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-      
-      // Detectar sección activa
-      const sections = navItems.map(item => item.href.replace("#", ""))
-      const current = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      
-      if (current) {
-        setActiveSection(current)
+    // Detectar sección activa
+    const sections = navItems.map(item => item.href.replace("#", ""))
+    const current = sections.find(section => {
+      const element = document.getElementById(section)
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        return rect.top <= 100 && rect.bottom >= 100
       }
+      return false
+    })
+    
+    if (current) {
+      setActiveSection(current)
     }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = useCallback((href: string) => {
     setIsOpen(false)
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    setMounted(true)
+    
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [handleScroll])
 
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${
         scrolled 
-          ? "bg-background/80 backdrop-blur-md border-b border-border/50" 
-          : "bg-transparent"
+          ? "bg-background/80 backdrop-blur-md border-b border-border/30" 
+          : "bg-transparent border-b border-border/10"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
     >
+      {/* Indicador sutil para móviles */}
+      <motion.div 
+        className="md:hidden absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-pink-500/40"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: scrolled ? 0.8 : 0.3 }}
+        transition={{ duration: 0.3 }}
+      ></motion.div>
+      
+      {/* Línea sutil en la parte inferior */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border/20 to-transparent"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: scrolled ? 0.6 : 0.2 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+      ></motion.div>
+      
+      {/* Línea adicional sutil para desktop */}
+      <motion.div 
+        className="hidden md:block absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        initial={{ opacity: 0, scaleX: 0 }}
+        animate={{ 
+          opacity: scrolled ? 0.4 : 0.1, 
+          scaleX: scrolled ? 1 : 0.5 
+        }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      ></motion.div>
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
@@ -80,6 +106,10 @@ export default function Navbar() {
                 src="/logonav.webp" 
                 alt="Lucas Dev Logo" 
                 className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg"
+                loading="eager"
+                decoding="async"
+                width="32"
+                height="32"
               />
               <span className="text-lg sm:text-xl font-bold text-foreground hidden xs:block">
                 Lucas Dev
@@ -117,30 +147,19 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-1 sm:space-x-2">
-            {/* Theme Toggle */}
-            {mounted && (
-              <motion.button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="p-1.5 sm:p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Cambiar tema"
-              >
-                {theme === "dark" ? <Sun size={16} className="sm:w-4 sm:h-4" /> : <Moon size={16} className="sm:w-4 sm:h-4" />}
-              </motion.button>
-            )}
-
+          {/* Mobile Menu Button */}
+          <div className="flex items-center justify-center space-x-1 sm:space-x-2">
             {/* Mobile menu button */}
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-1.5 sm:p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+              className="md:hidden w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors relative flex items-center justify-center"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label="Abrir menú"
               aria-expanded={isOpen}
             >
+              {/* Indicador sutil del botón */}
+              <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-60"></div>
               {isOpen ? <X size={16} className="sm:w-4 sm:h-4" /> : <Menu size={16} className="sm:w-4 sm:h-4" />}
             </motion.button>
           </div>
@@ -148,7 +167,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Navigation */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
             className="md:hidden"

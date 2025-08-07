@@ -1,0 +1,21 @@
+{
+  "name": "Lucas Sosa - Full Stack Developer",
+  "short_name": "Lucas Dev",
+  "description": "Portfolio personal de Lucas Sosa, desarrollador Full Stack especializado en React, Next.js y tecnologías modernas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/logonav.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/logonav.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    }
+  ]
+}

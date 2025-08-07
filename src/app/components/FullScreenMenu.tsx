@@ -12,13 +12,14 @@ export default function FullScreenMenu({ isOpen, onClose }: FullScreenMenuProps)
   const menuItems = ["Work", "About", "Services", "Contact"]
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-white z-50 flex items-center justify-center"
+          className="fixed inset-0 z-50 bg-background/95 backdrop-blur-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
         >
           <button className="absolute top-6 right-6 text-gray-900" onClick={onClose}>
             <svg

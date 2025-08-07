@@ -91,10 +91,10 @@ export default function PortfolioGrid() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             {filteredProjects.map((project, index) => (
               <motion.div
-                key={project.id}
+                key={`${project.id}-${filter}`}
                 layout
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}

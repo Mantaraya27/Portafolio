@@ -16,6 +16,10 @@ html, body {
 
 html {
   scroll-behavior: smooth;
+  /* Optimización para mejor rendimiento */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Sticky Footer Implementation */
@@ -23,6 +27,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* Optimización de fuentes */
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
 }
 
 main {
@@ -56,6 +63,9 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  /* Optimización de renderizado */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 /* Mejoras de contraste para accesibilidad */
@@ -74,6 +84,54 @@ img {
 
 .transition-all {
   transition: all 0.2s ease-in-out;
+}
+
+/* Optimizaciones para mejor rendimiento */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Optimización de scroll */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Optimización de fuentes */
+.font-optimized {
+  font-display: swap;
+}
+
+/* Optimización de animaciones */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-optimized {
+    animation-fill-mode: both;
+  }
+}
+
+/* Optimización de contraste para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .text-gray-300 {
+    color: #e5e7eb;
+  }
+}
+
+/* Optimización de touch targets para móviles */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Optimización de scroll para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .scroll-touch {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 

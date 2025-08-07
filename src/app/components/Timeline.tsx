@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useCallback, useMemo } from "react"
 import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from "framer-motion"
 import { Code, Zap, Globe, Database, Rocket, Award } from "lucide-react"
 
@@ -81,11 +81,17 @@ export default function Timeline() {
     restDelta: 0.001,
   })
 
+  const handleToggleEvent = useCallback((index: number) => {
+    setExpandedEvent(expandedEvent === index ? null : index)
+  }, [expandedEvent])
+
+  const timelineEventsMemo = useMemo(() => timelineEvents, [])
+
   return (
-    <section ref={containerRef} className="py-16 sm:py-20 bg-background">
+    <section ref={containerRef} className="py-16 sm:py-20 bg-background relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -111,13 +117,13 @@ export default function Timeline() {
             style={{ scaleY: scaleX, transformOrigin: "top" }}
           />
 
-          {timelineEvents.map((event, index) => (
+          {timelineEventsMemo.map((event, index) => (
             <TimelineEvent
               key={event.year}
               event={event}
               index={index}
               isExpanded={expandedEvent === index}
-              onToggle={() => setExpandedEvent(expandedEvent === index ? null : index)}
+              onToggle={() => handleToggleEvent(index)}
             />
           ))}
         </div>
@@ -143,18 +149,28 @@ function TimelineEvent({
   return (
     <motion.div
       ref={ref}
-      className={`relative mb-16 last:mb-0 ${
+      className={`relative mb-24 sm:mb-16 last:mb-0 ${
         index % 2 === 0 ? "flex-row-reverse" : ""
       }`}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
     >
-      {/* Contenido del evento */}
-      <div className={`flex items-center ${index % 2 === 0 ? "flex-row-reverse" : ""}`}>
-        {/* Tarjeta del evento */}
+      {/* Punto del timeline */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 z-10 -top-6 flex justify-center">
         <motion.div
-          className={`w-5/12 ${index % 2 === 0 ? "ml-auto" : "mr-auto"}`}
+          className={`flex items-center justify-center w-12 h-12 bg-gradient-to-br ${event.color} rounded-full shadow-lg border-4 border-background`}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <event.icon className="w-6 h-6 text-white" />
+        </motion.div>
+      </div>
+
+      {/* Tarjeta del evento */}
+      <div className={`flex items-center flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+        <motion.div
+          className={`w-full md:w-5/12 ${index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"}`}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -193,7 +209,7 @@ function TimelineEvent({
             </div>
 
             {/* Detalles expandibles */}
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
               {isExpanded && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
@@ -240,17 +256,6 @@ function TimelineEvent({
             </div>
           </div>
         </motion.div>
-
-        {/* Punto del timeline */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-          <motion.div
-            className={`flex items-center justify-center w-12 h-12 bg-gradient-to-br ${event.color} rounded-full shadow-lg border-4 border-background`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <event.icon className="w-6 h-6 text-white" />
-          </motion.div>
-        </div>
       </div>
     </motion.div>
   )

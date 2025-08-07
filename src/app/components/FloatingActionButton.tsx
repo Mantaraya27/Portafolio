@@ -28,18 +28,19 @@ export default function FloatingActionButton() {
   }
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isVisible && (
         <motion.button
-          className="fixed bottom-8 right-8 bg-gray-900 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg z-50"
-          onClick={scrollToTop}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
+          onClick={scrollToTop}
+          aria-label="Volver arriba"
         >
-          ↑
+          <ArrowUp className="w-6 h-6" />
         </motion.button>
       )}
     </AnimatePresence>

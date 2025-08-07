@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useState, useCallback } from "react"
-import { motion, useAnimation, useMotionValue, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { Code, Zap, Palette, Globe, Database, Shield, Smartphone, Rocket } from "lucide-react"
 
 const skills = [
@@ -76,7 +76,6 @@ export default function SkillsCarousel() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [isDragging, setIsDragging] = useState(false)
   const carouselRef = useRef<HTMLDivElement>(null)
-  const controls = useAnimation()
 
   // Crear array infinito duplicando las skills
   const infiniteSkills = [...skills, ...skills, ...skills]
@@ -176,7 +175,7 @@ export default function SkillsCarousel() {
           {/* Carrusel infinito */}
           <motion.div
             ref={carouselRef}
-            className="flex gap-4 sm:gap-6"
+            className="flex gap-4 sm:gap-6 relative"
             animate={{ x: translateX }}
             transition={{ 
               type: "spring", 
@@ -197,7 +196,10 @@ export default function SkillsCarousel() {
                 nextSlide()
               }
             }}
-            style={{ width: `${infiniteSkills.length * 320}px` }}
+            style={{ 
+              width: `${infiniteSkills.length * 320}px`,
+              position: 'relative'
+            }}
           >
             {infiniteSkills.map((skill, index) => (
               <motion.div

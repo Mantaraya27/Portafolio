@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useCallback, useMemo } from "react"
 import { motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { toast } from "@/hooks/use-toast"
 import { Send, CheckCircle, AlertCircle, X } from "lucide-react"
+import { AnimatePresence } from "framer-motion"
 
 const formSchema = z.object({
   name: z.string()
@@ -73,7 +74,7 @@ export default function ContactForm() {
     },
   })
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  const onSubmit = useCallback(async (values: z.infer<typeof formSchema>) => {
     if (!formRef.current) return
 
     // Validación adicional antes de enviar
@@ -150,11 +151,11 @@ export default function ContactForm() {
     } finally {
       setIsSubmitting(false)
     }
-  }
+  }, [form])
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-      <div className="container mx-auto max-w-4xl">
+    <section className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-background grid place-items-center">
+      <div className="w-full max-w-4xl">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -172,7 +173,7 @@ export default function ContactForm() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start content-center">
           {/* Información de contacto */}
           <motion.div
             className="space-y-8"
@@ -245,16 +246,19 @@ export default function ContactForm() {
 
           {/* Formulario */}
           <motion.div
-            className="bg-background border border-border/20 rounded-2xl p-8 shadow-lg"
+            className="bg-background border border-border/20 rounded-2xl p-6 sm:p-8 shadow-lg w-full max-w-[95vw] lg:max-w-none mx-auto will-change-transform"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 100, damping: 15 }}
           >
             {/* Alertas */}
             {showValidationAlert && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                layout
                 className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg"
               >
                 <div className="flex items-center justify-between">
@@ -278,6 +282,9 @@ export default function ContactForm() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                layout
                 className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg"
               >
                 <div className="flex items-center justify-between">
@@ -301,6 +308,9 @@ export default function ContactForm() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                layout
                 className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg"
               >
                 <div className="flex items-center justify-between">
@@ -336,20 +346,20 @@ export default function ContactForm() {
             </div>
 
             <Form {...form}>
-              <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 sm:space-y-6">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">
+                      <FormLabel className="text-foreground text-base sm:text-sm">
                         Nombre <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="Tu nombre completo" 
                           {...field} 
-                          className="bg-background border-border/20 focus:border-primary/50"
+                          className="bg-background border-border/20 focus:border-primary/50 h-12 text-base sm:text-sm"
                           required
                         />
                       </FormControl>
@@ -363,7 +373,7 @@ export default function ContactForm() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">
+                      <FormLabel className="text-foreground text-base sm:text-sm">
                         Email <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
@@ -371,7 +381,7 @@ export default function ContactForm() {
                           type="email"
                           placeholder="tu@email.com" 
                           {...field} 
-                          className="bg-background border-border/20 focus:border-primary/50"
+                          className="bg-background border-border/20 focus:border-primary/50 h-12 text-base sm:text-sm"
                           required
                         />
                       </FormControl>
@@ -385,14 +395,14 @@ export default function ContactForm() {
                   name="subject"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">
+                      <FormLabel className="text-foreground text-base sm:text-sm">
                         Asunto <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="¿En qué puedo ayudarte?" 
                           {...field} 
-                          className="bg-background border-border/20 focus:border-primary/50"
+                          className="bg-background border-border/20 focus:border-primary/50 h-12 text-base sm:text-sm"
                           required
                         />
                       </FormControl>
@@ -406,13 +416,13 @@ export default function ContactForm() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">
+                      <FormLabel className="text-foreground text-base sm:text-sm">
                         Mensaje <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
                         <Textarea 
                           placeholder="Cuéntame sobre tu proyecto..." 
-                          className="min-h-[120px] bg-background border-border/20 focus:border-primary/50" 
+                          className="min-h-[180px] sm:min-h-[120px] bg-background border-border/20 focus:border-primary/50 text-base sm:text-sm" 
                           {...field} 
                           required
                         />
@@ -424,7 +434,7 @@ export default function ContactForm() {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white disabled:opacity-50 disabled:cursor-not-allowed" 
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white disabled:opacity-50 disabled:cursor-not-allowed h-14 sm:h-12 text-base sm:text-sm" 
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

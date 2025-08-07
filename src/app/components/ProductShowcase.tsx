@@ -41,30 +41,34 @@ export default function ProductShowcase() {
       <div className="container mx-auto">
         <h2 className="section-title">Our Expertise</h2>
         <div className="relative">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentProduct}
-              className="flex flex-col md:flex-row items-center justify-between"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="md:w-1/2 mb-8 md:mb-0">
-                <h3 className="text-3xl font-bold mb-4">{products[currentProduct].name}</h3>
-                <p className="text-xl text-gray-600 mb-8">{products[currentProduct].description}</p>
-                <button className="apple-button">Learn More</button>
-              </div>
-              <div className="md:w-1/2">
-                <Image
-                  src={products[currentProduct].image || "/placeholder.svg"}
-                  alt={products[currentProduct].name}
-                  width={600}
-                  height={600}
-                  className="rounded-2xl shadow-lg"
-                />
-              </div>
-            </motion.div>
+          <AnimatePresence mode="sync">
+            {products.map((product, index) => (
+              <motion.div
+                key={`${product.id}-${index}`}
+                layout
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group relative bg-background rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 ease-in-out border-2 border-transparent hover:border-primary/20"
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <div className="md:w-1/2 mb-8 md:mb-0">
+                  <h3 className="text-3xl font-bold mb-4">{product.name}</h3>
+                  <p className="text-xl text-gray-600 mb-8">{product.description}</p>
+                  <button className="apple-button">Learn More</button>
+                </div>
+                <div className="md:w-1/2">
+                  <Image
+                    src={product.image || "/placeholder.svg"}
+                    alt={product.name}
+                    width={600}
+                    height={600}
+                    className="rounded-2xl shadow-lg"
+                  />
+                </div>
+              </motion.div>
+            ))}
           </AnimatePresence>
           <button
             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg"

@@ -2,6 +2,7 @@ import "./globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import Footer from "./components/Footer"
+import ErrorBoundary from "./components/ErrorBoundary"
 import type React from "react"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -9,9 +10,35 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Lucas Sosa - Full Stack Developer",
   description: "Portfolio personal de Lucas Sosa, desarrollador Full Stack especializado en React, Next.js y tecnologías modernas.",
+  keywords: "desarrollador full stack, react, next.js, typescript, portfolio, desarrollo web",
+  authors: [{ name: "Lucas Sosa" }],
+  creator: "Lucas Sosa",
+  publisher: "Lucas Sosa",
+  robots: "index, follow",
+  openGraph: {
+    title: "Lucas Sosa - Full Stack Developer",
+    description: "Portfolio personal de Lucas Sosa, desarrollador Full Stack especializado en React, Next.js y tecnologías modernas.",
+    type: "website",
+    locale: "es_ES",
+    siteName: "Lucas Sosa Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lucas Sosa - Full Stack Developer",
+    description: "Portfolio personal de Lucas Sosa, desarrollador Full Stack especializado en React, Next.js y tecnologías modernas.",
+  },
   icons: {
     icon: '/logonav.ico',
+    apple: '/logonav.ico',
   },
+  manifest: '/site.webmanifest',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({
@@ -22,9 +49,11 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen bg-background text-foreground overflow-x-hidden flex flex-col`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main className="flex-1">{children}</main>
-          <Footer />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <ErrorBoundary>
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </ErrorBoundary>
         </ThemeProvider>
       </body>
     </html>
