@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { ExternalLink, Github, Zap } from "lucide-react"
 
 const projects = [
@@ -91,20 +91,15 @@ export default function PortfolioGrid() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <AnimatePresence mode="sync">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={`${project.id}-${filter}`}
-                layout
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative bg-background rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 ease-in-out border-2 border-transparent hover:border-primary/20 ${
-                  project.featured ? 'ring-2 ring-primary/20' : ''
-                }`}
-                whileHover={{ y: -8, scale: 1.02 }}
-              >
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={`${project.id}-${filter}`}
+              layout
+              className={`group relative bg-background rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 ease-in-out border-2 border-transparent hover:border-primary/20 ${
+                project.featured ? 'ring-2 ring-primary/20' : ''
+              }`}
+              whileHover={{ y: -8, scale: 1.02 }}
+            >
                 {/* Imagen del Proyecto */}
                 <div className="relative h-48 sm:h-56 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20" />
@@ -222,8 +217,7 @@ export default function PortfolioGrid() {
                 </div>
               </motion.div>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </motion.div>
 
         {/* CTA */}
         <motion.div
