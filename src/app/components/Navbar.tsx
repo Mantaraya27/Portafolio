@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
-import Link from "next/link"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Menu, X } from "lucide-react"
+import Link from "next/link"
 import { useTheme } from "next-themes"
-import { Menu, X, Sun, Moon } from "lucide-react"
 
 const navItems = [
   { name: "Inicio", href: "#home" },
@@ -22,7 +22,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home")
   const { theme, setTheme } = useTheme()
 
-  const handleScroll = useCallback(() => {
+  const handleScroll = () => {
     setScrolled(window.scrollY > 20)
     
     // Detectar sección activa
@@ -39,22 +39,22 @@ export default function Navbar() {
     if (current) {
       setActiveSection(current)
     }
-  }, [])
+  }
 
-  const handleNavClick = useCallback((href: string) => {
+  const handleNavClick = (href: string) => {
     setIsOpen(false)
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
-  }, [])
+  }
 
   useEffect(() => {
     setMounted(true)
     
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [handleScroll])
+  }, [])
 
   return (
     <motion.nav

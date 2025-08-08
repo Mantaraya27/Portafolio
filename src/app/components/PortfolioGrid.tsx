@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ExternalLink, Github, Globe, Zap, Code, Palette } from "lucide-react"
+import { ExternalLink, Github, Zap } from "lucide-react"
 
 const projects = [
   {

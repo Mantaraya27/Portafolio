@@ -1,18 +1,16 @@
 "use client"
 
-import { useState, useRef, useCallback, useMemo } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import emailjs from "@emailjs/browser"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { toast } from "@/hooks/use-toast"
 import { Send, CheckCircle, AlertCircle, X } from "lucide-react"
-import { AnimatePresence } from "framer-motion"
 
 const formSchema = z.object({
   name: z.string()

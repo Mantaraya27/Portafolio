@@ -32,7 +32,6 @@ const EMAILJS_PUBLIC_KEY = "JmT3zYakR7sixHf7c"
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -48,7 +47,6 @@ export default function Contact() {
     if (!formRef.current) return
 
     setIsSubmitting(true)
-    setIsSuccess(false)
 
     try {
       // Inicializar EmailJS
@@ -63,7 +61,6 @@ export default function Contact() {
       )
 
       if (result.status === 200) {
-        setIsSuccess(true)
         toast({
           title: "¡Mensaje enviado!",
           description: "Te responderemos lo antes posible.",

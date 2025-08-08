@@ -125,7 +125,7 @@ export default function Hero() {
                     setTimeout(() => {
                       document.body.removeChild(link)
                     }, 100)
-                  } catch (error) {
+                  } catch {
                     // Si hay un error, abrir en una nueva pestaña
                     window.open('/projects/CV - Lucas Sosa.pdf', '_blank')
                   }

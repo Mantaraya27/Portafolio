@@ -26,14 +26,12 @@ const products = [
 ]
 
 export default function ProductShowcase() {
-  const [currentProduct, setCurrentProduct] = useState(0)
-
   const nextProduct = () => {
-    setCurrentProduct((prev) => (prev + 1) % products.length)
+    // Lógica para siguiente producto
   }
 
   const prevProduct = () => {
-    setCurrentProduct((prev) => (prev - 1 + products.length) % products.length)
+    // Lógica para producto anterior
   }
 
   return (

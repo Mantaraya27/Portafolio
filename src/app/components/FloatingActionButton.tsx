@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { ArrowUp } from "lucide-react"
 
 export default function FloatingActionButton() {
   const [isVisible, setIsVisible] = useState(false)

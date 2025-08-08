@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useRef, useCallback, useMemo } from "react"
-import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from "framer-motion"
-import { Code, Zap, Globe, Database, Rocket, Award } from "lucide-react"
+import { motion, useScroll, useSpring, useInView, AnimatePresence } from "framer-motion"
+import { Code, Zap, Palette, Database, Shield, Smartphone } from "lucide-react"
 
 const timelineEvents = [
   {
@@ -41,7 +41,7 @@ const timelineEvents = [
     description: "Adopté Next.js y TypeScript para crear aplicaciones web de alto rendimiento.",
     details:
       "Me especialicé en Next.js para SSR, SSG y optimización de rendimiento. Implementé TypeScript para código más seguro y mantenible. Desarrollé aplicaciones escalables y optimizadas para SEO.",
-    icon: Rocket,
+    icon: Palette,
     technologies: ["Next.js", "TypeScript", "SSR", "SSG"],
     color: "from-orange-500 to-red-500",
   },
@@ -61,7 +61,7 @@ const timelineEvents = [
     description: "Sigo explorando nuevas tecnologías y mejorando mis habilidades.",
     details:
       "Mantengo un enfoque de aprendizaje constante, explorando nuevas tecnologías emergentes y metodologías de desarrollo. Me esfuerzo por mantenerme actualizado con las mejores prácticas y tendencias del desarrollo web moderno.",
-    icon: Award,
+    icon: Shield,
     technologies: ["Nuevas Tecnologías", "Mejores Prácticas", "Innovación", "Crecimiento"],
     color: "from-indigo-500 to-purple-500",
   },

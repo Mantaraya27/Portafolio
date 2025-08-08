@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback } from "react"
 import { motion } from "framer-motion"
-import { Code, Zap, Palette, Globe, Database, Shield, Smartphone, Rocket } from "lucide-react"
+import { Code, Zap, Palette, Globe, Database, Shield, Smartphone } from "lucide-react"
 
 const skills = [
   {
