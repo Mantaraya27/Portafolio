@@ -243,12 +243,12 @@ export default function SkillsCarousel() {
           </motion.div>
 
           {/* Indicadores de navegación */}
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-8 space-x-1.5 sm:space-x-2">
             {skills.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex 
                     ? 'bg-primary scale-110' 
                     : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
@@ -288,8 +288,8 @@ export default function SkillsCarousel() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-green-500' : 'bg-muted-foreground/30'}`} />
+          <div className="flex items-center space-x-2 text-xs sm:text-sm text-muted-foreground">
+            <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${isAutoPlaying ? 'bg-green-500' : 'bg-muted-foreground/30'}`} />
             <span>{isAutoPlaying ? 'Auto-play activo' : 'Auto-play pausado'}</span>
           </div>
         </motion.div>
