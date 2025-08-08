@@ -8,7 +8,7 @@
   "theme_color": "#3b82f6",
   "icons": [
     {
-      "src": "/logonav.ico",
+      "src": "/favicon.ico",
       "sizes": "32x32",
       "type": "image/x-icon"
     },
