@@ -3,6 +3,8 @@ import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import Footer from "./components/Footer"
 import ErrorBoundary from "./components/ErrorBoundary"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import type React from "react"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -57,6 +59,8 @@ export default function RootLayout({
             <Footer />
           </ErrorBoundary>
         </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
