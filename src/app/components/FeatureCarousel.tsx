@@ -243,7 +243,7 @@ export default function SkillsCarousel() {
           </motion.div>
 
           {/* Indicadores de navegación */}
-          <div className="hidden sm:flex justify-center mt-8 space-x-1.5 sm:space-x-2">
+          <div className="hidden justify-center mt-8 space-x-1.5 sm:space-x-2">
             {skills.map((_, index) => (
               <button
                 key={index}
