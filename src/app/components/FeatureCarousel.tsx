@@ -232,7 +232,19 @@ export default function SkillsCarousel() {
                       {[...Array(5)].map((_, i) => (
                         <div
                           key={i}
-                          className={`w-2 h-2 rounded-full ${i < 4 ? skill.color.replace('text-', 'bg-') : 'bg-muted-foreground/20'}`}
+                          className={`w-2 h-2 rounded-full ${
+                            i < 4 
+                              ? skill.color === 'text-blue-500' ? 'bg-blue-500' :
+                                skill.color === 'text-blue-600' ? 'bg-blue-600' :
+                                skill.color === 'text-yellow-500' ? 'bg-yellow-500' :
+                                skill.color === 'text-purple-500' ? 'bg-purple-500' :
+                                skill.color === 'text-green-500' ? 'bg-green-500' :
+                                skill.color === 'text-orange-500' ? 'bg-orange-500' :
+                                skill.color === 'text-red-500' ? 'bg-red-500' :
+                                skill.color === 'text-indigo-500' ? 'bg-indigo-500' :
+                                'bg-primary'
+                              : 'bg-muted-foreground/20'
+                          }`}
                         />
                       ))}
                     </div>
