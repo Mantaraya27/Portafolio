@@ -85,7 +85,6 @@ export default function PortfolioGrid() {
 
         {/* Grid de Proyectos */}
         <motion.div 
-          layout 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -94,7 +93,6 @@ export default function PortfolioGrid() {
           {filteredProjects.map((project, index) => (
             <motion.div
               key={`${project.id}-${filter}`}
-              layout
               className={`group relative bg-background rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 ease-in-out border-2 border-transparent hover:border-primary/20 ${
                 project.featured ? 'ring-2 ring-primary/20' : ''
               }`}
