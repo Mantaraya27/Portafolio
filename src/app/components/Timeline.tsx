@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback, useMemo } from "react"
 import { motion, useScroll, useSpring, useInView, AnimatePresence } from "framer-motion"
-import { Code, Zap, Palette, Database, Shield, Smartphone } from "lucide-react"
+import { Code, Zap, Palette, Database, Shield } from "lucide-react"
 
 const timelineEvents = [
   {

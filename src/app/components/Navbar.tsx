@@ -16,7 +16,6 @@ const navItems = [
 ]
 
 export default function Navbar() {
-  const [mounted, setMounted] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
@@ -26,17 +25,20 @@ export default function Navbar() {
     setScrolled(window.scrollY > 20)
     
     // Detectar sección activa
-    const sections = navItems.map(item => item.href.replace("#", ""))
-    const current = sections.find(section => {
+    const sections = ["home", "about", "skills", "projects", "timeline", "contact"]
+    let current = "home"
+    
+    for (const section of sections) {
       const element = document.getElementById(section)
       if (element) {
         const rect = element.getBoundingClientRect()
-        return rect.top <= 100 && rect.bottom >= 100
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          current = section
+        }
       }
-      return false
-    })
+    }
     
-    if (current) {
+    if (current !== activeSection) {
       setActiveSection(current)
     }
   }
@@ -50,11 +52,31 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    setMounted(true)
-    
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+      
+      // Detectar sección activa
+      const sections = ["home", "about", "skills", "projects", "timeline", "contact"]
+      let current = "home"
+      
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            current = section
+          }
+        }
+      }
+      
+      if (current !== activeSection) {
+        setActiveSection(current)
+      }
+    }
+
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [activeSection])
 
   return (
     <motion.nav

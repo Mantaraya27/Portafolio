@@ -43,7 +43,7 @@ export default function Contact() {
     },
   })
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(_: z.infer<typeof formSchema>) {
     if (!formRef.current) return
 
     setIsSubmitting(true)
