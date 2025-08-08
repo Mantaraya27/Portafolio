@@ -144,7 +144,7 @@ export default function SkillsCarousel() {
   const translateX = -currentIndex * 320
 
   return (
-    <section className="py-16 sm:py-20 bg-gradient-to-b from-background to-secondary/20 overflow-hidden">
+    <section className="py-16 sm:py-20 pb-20 sm:pb-24 bg-gradient-to-b from-background to-secondary/20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12"
@@ -243,7 +243,7 @@ export default function SkillsCarousel() {
           </motion.div>
 
           {/* Indicadores de navegación */}
-          <div className="flex justify-center mt-8 space-x-1.5 sm:space-x-2">
+          <div className="hidden sm:flex justify-center mt-8 space-x-1.5 sm:space-x-2">
             {skills.map((_, index) => (
               <button
                 key={index}
@@ -283,13 +283,13 @@ export default function SkillsCarousel() {
 
         {/* Indicador de auto-play */}
         <motion.div
-          className="flex justify-center mt-6"
+          className="flex justify-center mt-6 pb-4 sm:pb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
           <div className="flex items-center space-x-2 text-xs sm:text-sm text-muted-foreground">
-            <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${isAutoPlaying ? 'bg-green-500' : 'bg-muted-foreground/30'}`} />
+            <div className={`w-1 h-1 sm:w-2 sm:h-2 rounded-full ${isAutoPlaying ? 'bg-green-500' : 'bg-muted-foreground/30'}`} />
             <span>{isAutoPlaying ? 'Auto-play activo' : 'Auto-play pausado'}</span>
           </div>
         </motion.div>
