@@ -28,8 +28,12 @@ export const metadata = {
     description: "Portfolio personal de Lucas Sosa, desarrollador Full Stack especializado en React, Next.js y tecnologías modernas.",
   },
   icons: {
-    icon: '/logonav.ico',
+    icon: [
+      { url: '/logonav.ico', sizes: 'any' },
+      { url: '/logonav.webp', type: 'image/webp' },
+    ],
     apple: '/logonav.ico',
+    shortcut: '/logonav.ico',
   },
   manifest: '/site.webmanifest',
 }
@@ -48,6 +52,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/logonav.ico" sizes="any" />
+        <link rel="icon" href="/logonav.webp" type="image/webp" />
+        <link rel="apple-touch-icon" href="/logonav.ico" />
+        <link rel="shortcut icon" href="/logonav.ico" />
+      </head>
       <body className={`${inter.className} min-h-screen bg-background text-foreground overflow-x-hidden flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <ErrorBoundary>
