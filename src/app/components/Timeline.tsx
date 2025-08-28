@@ -6,7 +6,7 @@ import { Code, Zap, Palette, Database, Shield } from "lucide-react"
 
 const timelineEvents = [
   {
-    year: 2020,
+    year: 2021,
     title: "Inicio en Desarrollo Web",
     description: "Comencé mi viaje en el desarrollo web con HTML, CSS y JavaScript.",
     details:
@@ -16,37 +16,17 @@ const timelineEvents = [
     color: "from-blue-500 to-cyan-500",
   },
   {
-    year: 2021,
-    title: "Especialización en React",
-    description: "Me sumergí en el ecosistema React y desarrollo de aplicaciones modernas.",
-    details:
-      "Desarrollé aplicaciones web dinámicas con React, aprendiendo sobre componentes, hooks, estado y gestión de datos. Creé proyectos personales y colaboré en proyectos open source.",
-    icon: Code,
-    technologies: ["React", "Hooks", "Redux", "Material-UI"],
-    color: "from-purple-500 to-pink-500",
-  },
-  {
     year: 2022,
     title: "Full-Stack Development",
     description: "Expandí mis habilidades hacia el desarrollo completo de aplicaciones.",
     details:
-      "Aprendí Node.js, Express y MongoDB para crear aplicaciones full-stack. Desarrollé APIs RESTful, bases de datos y aplicaciones web completas con autenticación y autorización.",
+      "Aprendí Node.js, Express y MySQL para crear aplicaciones full-stack. Desarrollé APIs RESTful, bases de datos y aplicaciones web completas con autenticación y autorización.",
     icon: Database,
-    technologies: ["Node.js", "Express", "MongoDB", "JWT"],
+    technologies: ["Node.js", "Express", "MySQL", "JWT"],
     color: "from-green-500 to-emerald-500",
   },
   {
     year: 2023,
-    title: "Next.js y TypeScript",
-    description: "Adopté Next.js y TypeScript para crear aplicaciones web de alto rendimiento.",
-    details:
-      "Me especialicé en Next.js para SSR, SSG y optimización de rendimiento. Implementé TypeScript para código más seguro y mantenible. Desarrollé aplicaciones escalables y optimizadas para SEO.",
-    icon: Palette,
-    technologies: ["Next.js", "TypeScript", "SSR", "SSG"],
-    color: "from-orange-500 to-red-500",
-  },
-  {
-    year: 2024,
     title: "Optimización y Performance",
     description: "Me enfoqué en optimización de Core Web Vitals y mejores prácticas.",
     details:
@@ -54,6 +34,16 @@ const timelineEvents = [
     icon: Zap,
     technologies: ["Core Web Vitals", "SEO", "Accessibility", "UX"],
     color: "from-yellow-500 to-orange-500",
+  },
+  {
+    year: 2024,
+    title: "Next.js y TypeScript",
+    description: "Adopté Next.js y TypeScript para crear aplicaciones web de alto rendimiento.",
+    details:
+      "Me especialicé en Next.js para SSR, SSG y optimización de rendimiento. Implementé TypeScript para código más seguro y mantenible. Desarrollé aplicaciones escalables y optimizadas para SEO.",
+    icon: Palette,
+    technologies: ["Next.js", "TypeScript", "SSR", "SSG"],
+    color: "from-orange-500 to-red-500",
   },
   {
     year: 2025,
